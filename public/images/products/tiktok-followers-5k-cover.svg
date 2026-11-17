@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e0e16"/><stop offset="1" stop-color="#050507"/></linearGradient>
+<linearGradient id="brand" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#25f4ee"/><stop offset="0.25" stop-color="#25f4ee"/><stop offset="0.5" stop-color="#ffffff"/><stop offset="0.75" stop-color="#fe2c55"/><stop offset="1" stop-color="#fe2c55"/></linearGradient>
+<radialGradient id="ga"><stop offset="0" stop-color="#25f4ee" stop-opacity="0.5"/><stop offset="1" stop-color="#25f4ee" stop-opacity="0"/></radialGradient>
+<radialGradient id="gb"><stop offset="0" stop-color="#fe2c55" stop-opacity="0.4"/><stop offset="1" stop-color="#fe2c55" stop-opacity="0"/></radialGradient>
+<linearGradient id="panel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a1a26"/><stop offset="1" stop-color="#101018"/></linearGradient>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045"/></pattern>
+</defs>
+<rect width="1200" height="900" fill="url(#bg)"/>
+<rect width="1200" height="900" fill="url(#grid)"/>
+<circle cx="260" cy="220" r="480" fill="url(#ga)"/>
+<circle cx="980" cy="720" r="440" fill="url(#gb)"/>
+<text x="90" y="450" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="290" letter-spacing="-8" fill="url(#brand)">5K</text>
+<text x="98" y="530" font-family="'Cascadia Code', Consolas, 'Courier New', monospace" font-size="40" letter-spacing="14" fill="#ffffff" fill-opacity="0.85">FOLLOWERS</text>
+<text x="98" y="590" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="34" fill="url(#brand)">on TikTok</text>
+<polyline points="720,420 800,390 870,400 950,330 1020,300 1100,210" fill="none" stroke="url(#brand)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1100" cy="210" r="14" fill="#ffffff"/>
+<circle cx="1100" cy="210" r="28" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="3"/>
+<g transform="translate(700 600) scale(0.9)" opacity="0.35">
+<circle cx="0" cy="-18" r="16" fill="#25f4ee"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#25f4ee"/>
+</g><g transform="translate(752 608) scale(0.9)" opacity="0.38125">
+<circle cx="0" cy="-18" r="16" fill="#fe2c55"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#fe2c55"/>
+</g><g transform="translate(804 600) scale(0.9)" opacity="0.4125">
+<circle cx="0" cy="-18" r="16" fill="#ffffff"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#ffffff"/>
+</g><g transform="translate(856 608) scale(0.9)" opacity="0.44375">
+<circle cx="0" cy="-18" r="16" fill="#25f4ee"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#25f4ee"/>
+</g><g transform="translate(908 600) scale(0.9)" opacity="0.475">
+<circle cx="0" cy="-18" r="16" fill="#fe2c55"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#fe2c55"/>
+</g><g transform="translate(960 608) scale(0.9)" opacity="0.50625">
+<circle cx="0" cy="-18" r="16" fill="#ffffff"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#ffffff"/>
+</g><g transform="translate(1012 600) scale(0.9)" opacity="0.5375">
+<circle cx="0" cy="-18" r="16" fill="#25f4ee"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#25f4ee"/>
+</g><g transform="translate(1064 608) scale(0.9)" opacity="0.56875">
+<circle cx="0" cy="-18" r="16" fill="#fe2c55"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#fe2c55"/>
+</g><g transform="translate(674 530) scale(0.9)" opacity="0.6">
+<circle cx="0" cy="-18" r="16" fill="#ffffff"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#ffffff"/>
+</g><g transform="translate(726 538) scale(0.9)" opacity="0.63125">
+<circle cx="0" cy="-18" r="16" fill="#25f4ee"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#25f4ee"/>
+</g><g transform="translate(778 530) scale(0.9)" opacity="0.6625">
+<circle cx="0" cy="-18" r="16" fill="#fe2c55"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#fe2c55"/>
+</g><g transform="translate(830 538) scale(0.9)" opacity="0.69375">
+<circle cx="0" cy="-18" r="16" fill="#ffffff"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#ffffff"/>
+</g><g transform="translate(882 530) scale(0.9)" opacity="0.725">
+<circle cx="0" cy="-18" r="16" fill="#25f4ee"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#25f4ee"/>
+</g><g transform="translate(934 538) scale(0.9)" opacity="0.75625">
+<circle cx="0" cy="-18" r="16" fill="#fe2c55"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#fe2c55"/>
+</g><g transform="translate(986 530) scale(0.9)" opacity="0.7875">
+<circle cx="0" cy="-18" r="16" fill="#ffffff"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#ffffff"/>
+</g><g transform="translate(1038 538) scale(0.9)" opacity="0.81875">
+<circle cx="0" cy="-18" r="16" fill="#25f4ee"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#25f4ee"/>
+</g>
+</svg>

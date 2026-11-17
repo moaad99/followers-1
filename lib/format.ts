@@ -10,6 +10,12 @@ export function formatPrice(amount: number): string {
   }).format(amount);
 }
 
+/** Price per 1,000 followers, for comparing package sizes. */
+export function formatPricePerThousand(price: number, quantity: number): string {
+  const perThousand = Math.round((price / quantity) * 1000 * 100) / 100;
+  return `${formatPrice(perThousand)} per 1K`;
+}
+
 export const AVAILABILITY_LABELS: Record<Availability, string> = {
   "in-stock": "In stock",
   limited: "Limited",

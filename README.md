@@ -1,6 +1,6 @@
 # Neonvault
 
-A frontend-only storefront for digital products. Customers browse the catalogue, open a product page and buy by sending you a prefilled WhatsApp message. The site has no backend, database, accounts, cart or payment integration.
+A frontend-only storefront for Instagram and TikTok follower packages (100, 1K, 5K and 10K followers). Customers pick a package, open its page and order by sending you a prefilled WhatsApp message with their username. The site has no backend, database, accounts, cart or payment integration.
 
 Built with Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, React Three Fiber, Framer Motion and Lucide icons.
 
@@ -33,31 +33,33 @@ npx tsc --noEmit    # type check (run `npx next typegen` first after adding rout
 
 Open `config/store.ts` and set these values:
 
-- `whatsappNumber` is your WhatsApp Business number in international format, digits only. For a Moroccan number that looks like `212612345678`. The current value is a placeholder, so the buttons open WhatsApp but the message goes nowhere until you change it.
-- `siteUrl` is the public address of the site. It goes into every WhatsApp message as the product link. You can also set it with the `NEXT_PUBLIC_SITE_URL` environment variable on your host.
+- `whatsappNumber` is your WhatsApp number with the country code, for example `+212 612-345678`. Spaces, dashes and `+` are fine.
+- `siteUrl` is the public address of the site. It goes into every WhatsApp message as the package link. On Vercel it is picked up automatically from the production domain. Elsewhere, set the `NEXT_PUBLIC_SITE_URL` environment variable.
 - `storeName`, `tagline`, `description`, `businessHours`, `responseTime` and `deliveryMethod` appear in the header, footer, contact page and metadata. The sample hours and response time are examples, so replace them with your own.
 
-## Managing products
+## Managing packages
 
-All products live in `data/products.ts`.
+All packages live in `data/products.ts`, one object per package. The prices and delivery times there are examples. Check them against your own service before going live.
 
-To add a product, copy an existing object in the `PRODUCTS` array and change its fields. The `slug` must be unique because it becomes the page address (`/products/your-slug`). Product pages are generated at build time, so rebuild and redeploy after editing.
+To change a price, edit `price` on that package. To add a package, copy an existing object in the `PRODUCTS` array and change its fields. The `slug` must be unique because it becomes the page address (`/products/your-slug`). Pages are generated at build time, so push your change and Vercel rebuilds the site.
 
-To remove a product, delete its object. To add a category, add an entry to `CATEGORIES` and use its `id` on your products. The filter chips and footer links update by themselves.
+To remove a package, delete its object. To add a platform, add an entry to `CATEGORIES` and use its `id` as the package `category`. The filter chips and footer links update by themselves.
 
 The fields you will use most:
 
 | Field | What it does |
 | --- | --- |
-| `price`, `compareAtPrice` | Price in the currency set in the config. `compareAtPrice` is optional and shows as a struck-through price with a "Save x%" badge. |
+| `price` | Price in the currency set in the config. |
+| `quantity` | Number of followers. Used for search and for the "per 1K" price shown under each price. |
+| `compareAtPrice` | Optional. Shows a struck-through price with a "Save x%" badge. Only use it for a price you really charged before. |
 | `availability` | `in-stock`, `limited`, `pre-order` or `sold-out`. It changes the badge, the button label and the WhatsApp message. |
-| `featured` | Adds a "Featured" badge and sorts the product first. |
+| `featured` | Adds a "Featured" badge and sorts the package first. |
 | `images` | Paths under `public/`. The first image is the card cover. |
-| `features`, `specs`, `delivery`, `faqs` | Content for the product page. `faqs` is optional. |
+| `features`, `specs`, `delivery`, `faqs` | Content for the package page. `faqs` is optional. |
 
 ### Images
 
-Product images go in `public/images/products/`. The sample images are SVG files generated for this project. You can replace them with PNG, JPG or WebP files of the same name, or point `images` at new files. A 4:3 ratio (for example 1200 × 900) fits the cards and gallery without cropping.
+Package images go in `public/images/products/`. Each package has a cover, a profile preview and a details image. They are SVG files generated for this project, using each platform's colours but not its logo. You can replace them with PNG, JPG or WebP files, or point `images` at new files. A 4:3 ratio (for example 1200 × 900) fits the cards and gallery without cropping.
 
 ## How the WhatsApp purchase works
 
@@ -67,23 +69,24 @@ Product images go in `public/images/products/`. The sample images are SVG files 
 https://wa.me/<whatsappNumber>?text=<encoded message>
 ```
 
-The message includes the product name, price and product URL, encoded with `encodeURIComponent()`. For example:
+The message includes the package name, price and page URL, encoded with `encodeURIComponent()`, and ends with a line for the customer's username. For example:
 
 ```
-Hello! I'm interested in purchasing Orbit Dashboard UI Kit for $49. Could you please provide more details about the purchase?
+Hello! I'm interested in purchasing 1,000 Instagram Followers for $15. Could you please provide more details about the purchase?
 
-Product link: https://your-site.com/products/orbit-dashboard-ui-kit
+Product link: https://your-site.com/products/instagram-followers-1k
+My username: 
 ```
 
-Sold-out products ask about a restock and pre-order products ask to pre-order. The header, footer, floating button and contact page use a general enquiry message instead. On the contact page, visitors can write their own message and optionally attach a product before WhatsApp opens. Nothing is sent to a server.
+Sold-out packages ask when they will be available and pre-order packages ask to pre-order. The header, footer, floating button and contact page use a general enquiry message instead. On the contact page, visitors can add their username, pick a package and write their own message before WhatsApp opens. Nothing is sent to a server.
 
 ## Project structure
 
 ```
 app/
   layout.tsx                 Root layout: fonts, metadata, header, footer
-  page.tsx                   Home: 3D hero, how it works, catalogue, call to action
-  products/[slug]/page.tsx   Product page (prerendered for every product)
+  page.tsx                   Home: 3D hero, how it works, packages, call to action
+  products/[slug]/page.tsx   Package page (prerendered for every package)
   about/page.tsx
   contact/page.tsx
   not-found.tsx
@@ -97,10 +100,11 @@ components/
   home/                      Home page sections
   ui/                        Shared pieces: WhatsApp button, badges, reveal animation
 config/store.ts              Store name, WhatsApp number, site URL, hours
-data/products.ts             Products, categories and lookup helpers
+data/products.ts             Packages, platforms and lookup helpers
 lib/whatsapp.ts              WhatsApp link and message builders
-lib/format.ts                Price formatting and availability labels
-public/images/products/      Product images
+lib/format.ts                Price, price per 1K and availability labels
+public/images/products/      Package images
+vercel.json                  Tells Vercel this is a Next.js project
 ```
 
 ## Technical notes

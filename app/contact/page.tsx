@@ -31,9 +31,19 @@ const FAQS = [
       "We share the available payment options in the WhatsApp chat before you pay, and confirm the total with you first.",
   },
   {
-    question: "Can I get help after buying?",
+    question: "Do you need my password?",
     answer:
-      "Yes. Use the same WhatsApp chat for installation questions, updates or a new download link.",
+      "No. We only need your username or profile link. Never share your password with anyone, including us.",
+  },
+  {
+    question: "Can I order an amount that isn't listed?",
+    answer:
+      "Ask us on WhatsApp with the platform and number of followers you want, and we'll reply with a price.",
+  },
+  {
+    question: "Can I follow my order after paying?",
+    answer:
+      "Yes. Use the same WhatsApp chat to ask about progress until delivery is complete.",
   },
 ];
 

@@ -12,7 +12,7 @@ import {
 } from "framer-motion";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { getCategoryLabel, type Product } from "@/data/products";
-import { formatPrice } from "@/lib/format";
+import { formatPrice, formatPricePerThousand } from "@/lib/format";
 import { AvailabilityBadge } from "@/components/ui/availability-badge";
 
 interface ProductCardProps {
@@ -91,16 +91,21 @@ export function ProductCard({ product, eager = false }: ProductCardProps) {
           </p>
 
           <div className="mt-auto flex items-end justify-between gap-3 pt-6">
-            <p className="flex items-baseline gap-2">
-              <span className="font-display text-2xl font-semibold text-white">
-                {formatPrice(product.price)}
-              </span>
-              {product.compareAtPrice && (
-                <span className="text-sm text-white/35 line-through">
-                  {formatPrice(product.compareAtPrice)}
+            <div>
+              <p className="flex items-baseline gap-2">
+                <span className="font-display text-2xl font-semibold text-white">
+                  {formatPrice(product.price)}
                 </span>
-              )}
-            </p>
+                {product.compareAtPrice && (
+                  <span className="text-sm text-white/35 line-through">
+                    {formatPrice(product.compareAtPrice)}
+                  </span>
+                )}
+              </p>
+              <p className="mt-0.5 text-xs text-white/40">
+                {formatPricePerThousand(product.price, product.quantity)}
+              </p>
+            </div>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-all duration-300 group-hover:border-neon/50 group-hover:bg-neon group-hover:text-ink-950">
               View details
               <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

@@ -1,20 +1,19 @@
 /**
- * Product catalogue.
+ * Product catalogue: Instagram and TikTok follower packages.
  *
- * To add a product: copy one object in PRODUCTS, give it a unique `slug`,
- * and put its images in /public/images/products/. The first image in
- * `images` is used as the card cover.
- * To remove a product: delete its object.
- * To add a category: add an entry to CATEGORIES and use its `id`.
+ * To change a price: edit `price` on the package below.
+ * To add a package: copy one object in PRODUCTS, give it a unique `slug`,
+ * set `quantity` and `price`, and add images in /public/images/products/.
+ * The first image in `images` is used as the card cover.
+ * To remove a package: delete its object.
+ *
+ * Prices, delivery times and requirements below are examples.
+ * Check them against your own service before going live.
  */
 
 export const CATEGORIES = [
-  { id: "ui-kits", label: "UI kits" },
-  { id: "templates", label: "Templates" },
-  { id: "3d-assets", label: "3D assets" },
-  { id: "courses", label: "Courses" },
-  { id: "ebooks", label: "E-books" },
-  { id: "audio", label: "Audio" },
+  { id: "instagram", label: "Instagram" },
+  { id: "tiktok", label: "TikTok" },
 ] as const;
 
 export type CategoryId = (typeof CATEGORIES)[number]["id"];
@@ -39,18 +38,21 @@ export interface Product {
   /** Paragraphs shown on the product page. */
   description: string[];
   price: number;
-  /** Optional original price, shown struck through. */
+  /** Optional original price, shown struck through. Only use a real former price. */
   compareAtPrice?: number;
+  /** The platform. Used for filtering. */
   category: CategoryId;
+  /** Number of followers in the package. */
+  quantity: number;
   availability: Availability;
   featured?: boolean;
   images: string[];
   features: string[];
   specs: ProductSpec[];
   delivery: {
-    format: string;
-    time: string;
-    updates: string;
+    start: string;
+    speed: string;
+    requirement: string;
   };
   faqs?: ProductFaq[];
 }
@@ -61,321 +63,307 @@ const img = (slug: string) => [
   `/images/products/${slug}-details.svg`,
 ];
 
+const INSTAGRAM_FAQS: ProductFaq[] = [
+  {
+    question: "Does my Instagram account need to be public?",
+    answer:
+      "Yes. Keep your profile public until delivery is complete. Followers can't be added to a private account.",
+  },
+  {
+    question: "Can I change my username during delivery?",
+    answer:
+      "Please don't. Changing your username before delivery is complete can stop the order. Tell us on WhatsApp if you need to change it.",
+  },
+];
+
+const TIKTOK_FAQS: ProductFaq[] = [
+  {
+    question: "Does my TikTok account need to be public?",
+    answer:
+      "Yes. Keep your account public until delivery is complete. Followers can't be added to a private account.",
+  },
+  {
+    question: "Can I change my username during delivery?",
+    answer:
+      "Please don't. Changing your username before delivery is complete can stop the order. Tell us on WhatsApp if you need to change it.",
+  },
+];
+
 export const PRODUCTS: Product[] = [
+  // Instagram
   {
-    slug: "orbit-dashboard-ui-kit",
-    name: "Orbit Dashboard UI Kit",
-    shortDescription:
-      "A complete Figma system for analytics, admin and SaaS dashboards.",
+    slug: "instagram-followers-100",
+    name: "100 Instagram Followers",
+    shortDescription: "A small boost for a new or growing Instagram profile.",
     description: [
-      "Orbit is a dashboard design system built for product teams who ship data-heavy interfaces. Every screen is assembled from the same component library, so you can go from wireframe to polished UI without redrawing a single table.",
-      "Components use auto layout and variables throughout. Switch between dark and light themes, change the accent colour once, and the whole kit updates.",
+      "Add 100 followers to your Instagram profile. It's the simplest way to try the service before ordering a bigger package.",
+      "You only send us your username on WhatsApp. We never ask for your password.",
     ],
-    price: 49,
-    compareAtPrice: 79,
-    category: "ui-kits",
+    price: 3,
+    category: "instagram",
+    quantity: 100,
     availability: "in-stock",
-    featured: true,
-    images: img("orbit-dashboard-ui-kit"),
+    images: img("instagram-followers-100"),
     features: [
-      "120+ ready-made screens for analytics, CRM, finance and settings",
-      "450 components built with auto layout and variants",
-      "Dark and light themes driven by Figma variables",
-      "Chart library with line, bar, area, donut and heatmap styles",
-      "Responsive layouts for desktop, tablet and mobile",
+      "100 followers added to your Instagram profile",
+      "Only your username or profile link is needed",
+      "We never ask for your password",
+      "Order and follow-up on WhatsApp",
     ],
     specs: [
-      { label: "Format", value: "Figma (.fig)" },
-      { label: "Screens", value: "120+" },
-      { label: "Components", value: "450" },
-      { label: "Fonts", value: "Free Google Fonts" },
-      { label: "Licence", value: "Personal and commercial" },
+      { label: "Platform", value: "Instagram" },
+      { label: "Quantity", value: "100 followers" },
+      { label: "Delivery starts", value: "Within 24 hours" },
+      { label: "Delivery speed", value: "Same day" },
+      { label: "What we need", value: "Username or profile link" },
     ],
     delivery: {
-      format: "Figma file link and .fig download",
-      time: "Sent right after payment is confirmed",
-      updates: "Free lifetime updates",
+      start: "Within 24 hours of payment",
+      speed: "Usually completed the same day",
+      requirement: "Public account during delivery",
     },
-    faqs: [
-      {
-        question: "Do I need a paid Figma plan?",
-        answer:
-          "No. The file opens in the free Figma plan. Variables work on every plan that supports them.",
-      },
-      {
-        question: "Can I use it for client projects?",
-        answer:
-          "Yes. The licence covers unlimited personal and client projects. You can't resell the kit itself.",
-      },
-    ],
+    faqs: INSTAGRAM_FAQS,
   },
   {
-    slug: "launchpad-saas-template",
-    name: "Launchpad SaaS Template",
-    shortDescription:
-      "A Next.js and Tailwind landing site with pricing, blog and docs pages.",
+    slug: "instagram-followers-1k",
+    name: "1,000 Instagram Followers",
+    shortDescription: "A clear step up for creators and small businesses.",
     description: [
-      "Launchpad gives you a production-ready marketing site for a software product. It covers the pages most launches need: home, pricing, changelog, blog, docs and legal.",
-      "The code is typed end to end, scores well on Lighthouse, and keeps content in Markdown files, so you can edit copy without touching components.",
-    ],
-    price: 69,
-    category: "templates",
-    availability: "in-stock",
-    featured: true,
-    images: img("launchpad-saas-template"),
-    features: [
-      "14 pages including pricing, blog, docs and changelog",
-      "Built with Next.js App Router, TypeScript and Tailwind CSS",
-      "Markdown content with syntax highlighting",
-      "Animated sections that respect reduced-motion settings",
-      "SEO metadata and Open Graph images for every page",
-    ],
-    specs: [
-      { label: "Stack", value: "Next.js, React, Tailwind CSS" },
-      { label: "Pages", value: "14" },
-      { label: "Language", value: "TypeScript" },
-      { label: "Licence", value: "Single product, commercial" },
-    ],
-    delivery: {
-      format: "Source code (.zip) and private repository invite",
-      time: "Sent right after payment is confirmed",
-      updates: "12 months of updates",
-    },
-    faqs: [
-      {
-        question: "Where can I host it?",
-        answer:
-          "Anywhere that runs Next.js, including Vercel, Netlify and your own Node.js server.",
-      },
-    ],
-  },
-  {
-    slug: "prism-3d-icon-pack",
-    name: "Prism 3D Icon Pack",
-    shortDescription:
-      "240 glossy 3D icons in three styles, ready for web and product UI.",
-    description: [
-      "Prism is a set of 3D icons rendered in a consistent glass and clay style. Use the PNG renders straight away or open the GLB files to change the angle, colour and lighting.",
-      "Icons cover the usual product categories: finance, communication, files, devices, security and e-commerce.",
-    ],
-    price: 29,
-    category: "3d-assets",
-    availability: "in-stock",
-    images: img("prism-3d-icon-pack"),
-    features: [
-      "240 icons across 12 categories",
-      "Three material styles: glass, clay and neon",
-      "Transparent PNG renders at 2048 px",
-      "GLB source files for Blender, Spline and three.js",
-    ],
-    specs: [
-      { label: "Icons", value: "240" },
-      { label: "Formats", value: "GLB, PNG" },
-      { label: "Resolution", value: "2048 × 2048 px" },
-      { label: "Licence", value: "Personal and commercial" },
-    ],
-    delivery: {
-      format: "Download link (.zip, 1.8 GB)",
-      time: "Sent right after payment is confirmed",
-      updates: "New icons added free of charge",
-    },
-  },
-  {
-    slug: "motion-design-fundamentals",
-    name: "Motion Design Fundamentals",
-    shortDescription:
-      "A video course on timing, easing and UI animation, with five projects.",
-    description: [
-      "This course teaches the principles behind interface animation: timing, easing, choreography and feedback. Each module ends with a small project you build yourself.",
-      "Lessons are short and practical. You'll work in Figma and then rebuild the same animations in CSS and Framer Motion.",
-    ],
-    price: 89,
-    compareAtPrice: 129,
-    category: "courses",
-    availability: "limited",
-    featured: true,
-    images: img("motion-design-fundamentals"),
-    features: [
-      "38 lessons, 6 h 20 min of video",
-      "Five guided projects with source files",
-      "Figma prototypes and matching code examples",
-      "Private community access for questions",
-      "Certificate of completion",
-    ],
-    specs: [
-      { label: "Lessons", value: "38" },
-      { label: "Runtime", value: "6 h 20 min" },
-      { label: "Level", value: "Beginner to intermediate" },
-      { label: "Language", value: "English, with subtitles" },
-    ],
-    delivery: {
-      format: "Course access link",
-      time: "Access granted within a few hours of payment",
-      updates: "Lifetime access to the course and new lessons",
-    },
-    faqs: [
-      {
-        question: "Why is it marked as limited?",
-        answer:
-          "The course includes community support, so places are capped each month to keep answers quick.",
-      },
-    ],
-  },
-  {
-    slug: "freelance-pricing-playbook",
-    name: "Freelance Pricing Playbook",
-    shortDescription:
-      "An e-book with scripts and templates for pricing creative work.",
-    description: [
-      "A practical guide to quoting design and development work. It walks through value-based pricing, writing proposals, handling scope changes and raising your rates with existing clients.",
-      "The book comes with editable proposal and invoice templates so you can apply each chapter straight away.",
-    ],
-    price: 19,
-    category: "ebooks",
-    availability: "in-stock",
-    images: img("freelance-pricing-playbook"),
-    features: [
-      "148 pages across 10 chapters",
-      "12 editable proposal, contract and invoice templates",
-      "Email scripts for negotiation and rate increases",
-      "Worksheets to calculate your minimum day rate",
-    ],
-    specs: [
-      { label: "Pages", value: "148" },
-      { label: "Formats", value: "PDF, EPUB" },
-      { label: "Templates", value: "Google Docs and Word" },
-      { label: "Language", value: "English" },
-    ],
-    delivery: {
-      format: "PDF and EPUB download",
-      time: "Sent right after payment is confirmed",
-      updates: "Free updated editions",
-    },
-  },
-  {
-    slug: "lofi-focus-sound-pack",
-    name: "Lo-fi Focus Sound Pack",
-    shortDescription:
-      "160 royalty-free lo-fi loops and one-shots for videos and streams.",
-    description: [
-      "A collection of warm, tape-saturated loops built for background music. Drums, keys, bass and textures are all supplied as separate stems so you can arrange your own tracks.",
-      "Everything is cleared for use in videos, podcasts, games and live streams.",
-    ],
-    price: 24,
-    category: "audio",
-    availability: "in-stock",
-    images: img("lofi-focus-sound-pack"),
-    features: [
-      "160 loops and 90 one-shots",
-      "Labelled by key and tempo",
-      "Stems for drums, keys, bass and textures",
-      "Royalty-free for commercial content",
-    ],
-    specs: [
-      { label: "Format", value: "WAV, 24-bit, 44.1 kHz" },
-      { label: "Tempo", value: "70 to 90 BPM" },
-      { label: "Size", value: "2.4 GB" },
-      { label: "Licence", value: "Royalty-free" },
-    ],
-    delivery: {
-      format: "Download link (.zip)",
-      time: "Sent right after payment is confirmed",
-      updates: "Free expansion packs",
-    },
-  },
-  {
-    slug: "creator-os-workspace",
-    name: "Creator OS Workspace",
-    shortDescription:
-      "An all-in-one workspace template to plan content, clients and income.",
-    description: [
-      "Creator OS is a ready-made workspace for freelancers and content creators. It links your content calendar, client projects, invoices and goals so you can see everything from one dashboard.",
-      "It's compatible with Notion and installs with a single duplicate link. A short video guide shows you how to adapt it.",
+      "Add 1,000 followers to your Instagram profile. A good fit for a new brand page, a small shop or a creator starting to post regularly.",
+      "Followers are added gradually rather than all at once. You only send us your username on WhatsApp. We never ask for your password.",
     ],
     price: 15,
-    category: "templates",
+    category: "instagram",
+    quantity: 1000,
     availability: "in-stock",
-    images: img("creator-os-workspace"),
+    featured: true,
+    images: img("instagram-followers-1k"),
     features: [
-      "18 linked databases for content, clients and finances",
-      "6 dashboards for weekly planning and reviews",
-      "Content calendar with status tracking",
-      "Video setup guide",
+      "1,000 followers added to your Instagram profile",
+      "Delivered gradually rather than all at once",
+      "Only your username or profile link is needed",
+      "We never ask for your password",
+      "Order and follow-up on WhatsApp",
     ],
     specs: [
-      { label: "Platform", value: "Notion (free plan works)" },
-      { label: "Databases", value: "18" },
-      { label: "Dashboards", value: "6" },
-      { label: "Setup", value: "Duplicate link" },
+      { label: "Platform", value: "Instagram" },
+      { label: "Quantity", value: "1,000 followers" },
+      { label: "Delivery starts", value: "Within 24 hours" },
+      { label: "Delivery speed", value: "Within 1 day" },
+      { label: "What we need", value: "Username or profile link" },
     ],
     delivery: {
-      format: "Template duplicate link",
-      time: "Sent right after payment is confirmed",
-      updates: "Free updates",
+      start: "Within 24 hours of payment",
+      speed: "Usually completed within 1 day",
+      requirement: "Public account during delivery",
     },
+    faqs: INSTAGRAM_FAQS,
   },
   {
-    slug: "cyber-texture-collection",
-    name: "Cyber Texture Collection",
-    shortDescription:
-      "64 tileable PBR materials for sci-fi scenes, games and renders.",
+    slug: "instagram-followers-5k",
+    name: "5,000 Instagram Followers",
+    shortDescription: "For profiles ready to look established.",
     description: [
-      "A library of sci-fi surfaces: brushed alloys, carbon weaves, emissive panels and worn plating. Every material is seamless and comes with a full PBR map set.",
-      "Tested in Blender, Unreal Engine, Unity and three.js.",
+      "Add 5,000 followers to your Instagram profile. Suited to businesses, artists and creators who already post often.",
+      "Followers are added gradually over a few days. You only send us your username on WhatsApp. We never ask for your password.",
     ],
-    price: 39,
-    compareAtPrice: 55,
-    category: "3d-assets",
-    availability: "pre-order",
-    images: img("cyber-texture-collection"),
+    price: 59,
+    category: "instagram",
+    quantity: 5000,
+    availability: "in-stock",
+    images: img("instagram-followers-5k"),
     features: [
-      "64 tileable materials at 4K",
-      "Base colour, normal, roughness, metallic, height and emissive maps",
-      "Blender material library included",
-      "Preview scene for quick testing",
+      "5,000 followers added to your Instagram profile",
+      "Delivered gradually over 2 to 3 days",
+      "Only your username or profile link is needed",
+      "We never ask for your password",
+      "Progress updates on WhatsApp if you ask",
     ],
     specs: [
-      { label: "Materials", value: "64" },
-      { label: "Resolution", value: "4096 × 4096 px" },
-      { label: "Maps", value: "Full PBR set" },
-      { label: "Release", value: "Pre-order, ships next month" },
+      { label: "Platform", value: "Instagram" },
+      { label: "Quantity", value: "5,000 followers" },
+      { label: "Delivery starts", value: "Within 24 hours" },
+      { label: "Delivery speed", value: "2 to 3 days" },
+      { label: "What we need", value: "Username or profile link" },
     ],
     delivery: {
-      format: "Download link (.zip)",
-      time: "Sent on release day",
-      updates: "Free updates",
+      start: "Within 24 hours of payment",
+      speed: "Usually completed in 2 to 3 days",
+      requirement: "Public account during delivery",
     },
+    faqs: INSTAGRAM_FAQS,
   },
   {
-    slug: "folio-portfolio-template",
-    name: "Folio Portfolio Template",
-    shortDescription:
-      "A motion-rich portfolio site for designers, with case study layouts.",
+    slug: "instagram-followers-10k",
+    name: "10,000 Instagram Followers",
+    shortDescription: "The largest Instagram package, with the lowest price per follower.",
     description: [
-      "Folio is a personal portfolio template with smooth page transitions and detailed case study layouts. Projects are written in Markdown, so adding new work takes minutes.",
-      "This edition is sold out. Message us on WhatsApp to be told when the next batch of licences opens.",
+      "Add 10,000 followers to your Instagram profile. It's the best value per follower in the store.",
+      "Followers are added gradually over several days. You only send us your username on WhatsApp. We never ask for your password.",
     ],
-    price: 45,
-    category: "templates",
-    availability: "sold-out",
-    images: img("folio-portfolio-template"),
+    price: 99,
+    category: "instagram",
+    quantity: 10000,
+    availability: "in-stock",
+    images: img("instagram-followers-10k"),
     features: [
-      "22 sections and 4 case study layouts",
-      "Page transitions with Framer Motion",
-      "Markdown-based projects",
-      "Contact section that links to WhatsApp and email",
+      "10,000 followers added to your Instagram profile",
+      "Delivered gradually over 3 to 5 days",
+      "Only your username or profile link is needed",
+      "We never ask for your password",
+      "Progress updates on WhatsApp if you ask",
     ],
     specs: [
-      { label: "Stack", value: "Next.js, Tailwind CSS" },
-      { label: "Sections", value: "22" },
-      { label: "Content", value: "Markdown" },
-      { label: "Licence", value: "Personal" },
+      { label: "Platform", value: "Instagram" },
+      { label: "Quantity", value: "10,000 followers" },
+      { label: "Delivery starts", value: "Within 24 hours" },
+      { label: "Delivery speed", value: "3 to 5 days" },
+      { label: "What we need", value: "Username or profile link" },
     ],
     delivery: {
-      format: "Source code (.zip)",
-      time: "Sent when licences reopen",
-      updates: "12 months of updates",
+      start: "Within 24 hours of payment",
+      speed: "Usually completed in 3 to 5 days",
+      requirement: "Public account during delivery",
     },
+    faqs: INSTAGRAM_FAQS,
+  },
+
+  // TikTok
+  {
+    slug: "tiktok-followers-100",
+    name: "100 TikTok Followers",
+    shortDescription: "A small boost for a new or growing TikTok account.",
+    description: [
+      "Add 100 followers to your TikTok account. It's the simplest way to try the service before ordering a bigger package.",
+      "You only send us your username on WhatsApp. We never ask for your password.",
+    ],
+    price: 3,
+    category: "tiktok",
+    quantity: 100,
+    availability: "in-stock",
+    images: img("tiktok-followers-100"),
+    features: [
+      "100 followers added to your TikTok account",
+      "Only your username or profile link is needed",
+      "We never ask for your password",
+      "Order and follow-up on WhatsApp",
+    ],
+    specs: [
+      { label: "Platform", value: "TikTok" },
+      { label: "Quantity", value: "100 followers" },
+      { label: "Delivery starts", value: "Within 24 hours" },
+      { label: "Delivery speed", value: "Same day" },
+      { label: "What we need", value: "Username or profile link" },
+    ],
+    delivery: {
+      start: "Within 24 hours of payment",
+      speed: "Usually completed the same day",
+      requirement: "Public account during delivery",
+    },
+    faqs: TIKTOK_FAQS,
+  },
+  {
+    slug: "tiktok-followers-1k",
+    name: "1,000 TikTok Followers",
+    shortDescription: "A clear step up for creators posting regularly.",
+    description: [
+      "Add 1,000 followers to your TikTok account. A good fit for creators and small brands starting to post regularly.",
+      "Followers are added gradually rather than all at once. You only send us your username on WhatsApp. We never ask for your password.",
+    ],
+    price: 14,
+    category: "tiktok",
+    quantity: 1000,
+    availability: "in-stock",
+    featured: true,
+    images: img("tiktok-followers-1k"),
+    features: [
+      "1,000 followers added to your TikTok account",
+      "Delivered gradually rather than all at once",
+      "Only your username or profile link is needed",
+      "We never ask for your password",
+      "Order and follow-up on WhatsApp",
+    ],
+    specs: [
+      { label: "Platform", value: "TikTok" },
+      { label: "Quantity", value: "1,000 followers" },
+      { label: "Delivery starts", value: "Within 24 hours" },
+      { label: "Delivery speed", value: "Within 1 day" },
+      { label: "What we need", value: "Username or profile link" },
+    ],
+    delivery: {
+      start: "Within 24 hours of payment",
+      speed: "Usually completed within 1 day",
+      requirement: "Public account during delivery",
+    },
+    faqs: TIKTOK_FAQS,
+  },
+  {
+    slug: "tiktok-followers-5k",
+    name: "5,000 TikTok Followers",
+    shortDescription: "For accounts ready to look established.",
+    description: [
+      "Add 5,000 followers to your TikTok account. Suited to creators, artists and brands who already post often.",
+      "Followers are added gradually over a few days. You only send us your username on WhatsApp. We never ask for your password.",
+    ],
+    price: 55,
+    category: "tiktok",
+    quantity: 5000,
+    availability: "in-stock",
+    images: img("tiktok-followers-5k"),
+    features: [
+      "5,000 followers added to your TikTok account",
+      "Delivered gradually over 2 to 3 days",
+      "Only your username or profile link is needed",
+      "We never ask for your password",
+      "Progress updates on WhatsApp if you ask",
+    ],
+    specs: [
+      { label: "Platform", value: "TikTok" },
+      { label: "Quantity", value: "5,000 followers" },
+      { label: "Delivery starts", value: "Within 24 hours" },
+      { label: "Delivery speed", value: "2 to 3 days" },
+      { label: "What we need", value: "Username or profile link" },
+    ],
+    delivery: {
+      start: "Within 24 hours of payment",
+      speed: "Usually completed in 2 to 3 days",
+      requirement: "Public account during delivery",
+    },
+    faqs: TIKTOK_FAQS,
+  },
+  {
+    slug: "tiktok-followers-10k",
+    name: "10,000 TikTok Followers",
+    shortDescription: "The largest TikTok package, with the lowest price per follower.",
+    description: [
+      "Add 10,000 followers to your TikTok account. It's the best value per follower in the store.",
+      "Followers are added gradually over several days. You only send us your username on WhatsApp. We never ask for your password.",
+    ],
+    price: 95,
+    category: "tiktok",
+    quantity: 10000,
+    availability: "in-stock",
+    images: img("tiktok-followers-10k"),
+    features: [
+      "10,000 followers added to your TikTok account",
+      "Delivered gradually over 3 to 5 days",
+      "Only your username or profile link is needed",
+      "We never ask for your password",
+      "Progress updates on WhatsApp if you ask",
+    ],
+    specs: [
+      { label: "Platform", value: "TikTok" },
+      { label: "Quantity", value: "10,000 followers" },
+      { label: "Delivery starts", value: "Within 24 hours" },
+      { label: "Delivery speed", value: "3 to 5 days" },
+      { label: "What we need", value: "Username or profile link" },
+    ],
+    delivery: {
+      start: "Within 24 hours of payment",
+      speed: "Usually completed in 3 to 5 days",
+      requirement: "Public account during delivery",
+    },
+    faqs: TIKTOK_FAQS,
   },
 ];
 
@@ -387,6 +375,7 @@ export function getCategoryLabel(id: CategoryId): string {
   return CATEGORIES.find((category) => category.id === id)?.label ?? id;
 }
 
+/** Other packages on the same platform first, then the other platform. */
 export function getRelatedProducts(product: Product, limit = 3): Product[] {
   const sameCategory = PRODUCTS.filter(
     (p) => p.slug !== product.slug && p.category === product.category,

@@ -12,9 +12,9 @@ export default function HomePage() {
   const whatsappUrl = buildWhatsAppUrl(GENERAL_WHATSAPP_MESSAGE);
 
   const stats = [
-    { value: String(PRODUCTS.length), label: "Products" },
-    { value: String(CATEGORIES.length), label: "Categories" },
-    { value: "0", label: "Sign-ups needed" },
+    { value: String(PRODUCTS.length), label: "Packages" },
+    { value: String(CATEGORIES.length), label: "Platforms" },
+    { value: "0", label: "Passwords needed" },
   ];
 
   return (
@@ -29,9 +29,9 @@ export default function HomePage() {
       >
         <Reveal>
           <SectionHeading
-            eyebrow="The catalogue"
-            title="Everything in the vault"
-            description="Search by name or keyword, or filter by category. Open any product for full details and to order."
+            eyebrow="Packages"
+            title="Choose your package"
+            description="Filter by platform or search by size, for example 1K or 10K. Open any package for delivery details and to order."
           />
         </Reveal>
         <div className="mt-10">

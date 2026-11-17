@@ -17,15 +17,18 @@ export function getProductWhatsAppMessage(product: Product): string {
   const price = formatPrice(product.price);
   const url = getProductUrl(product);
 
+  // The customer fills in their username before sending.
+  const footer = `\n\nProduct link: ${url}\nMy username: `;
+
   if (product.availability === "sold-out") {
-    return `Hello! I'm interested in ${product.name} (${price}), which is currently sold out. Could you let me know when it will be available again?\n\nProduct link: ${url}`;
+    return `Hello! I'm interested in ${product.name} (${price}), which is currently unavailable. Could you let me know when it will be available again?${footer}`;
   }
 
   if (product.availability === "pre-order") {
-    return `Hello! I'd like to pre-order ${product.name} for ${price}. Could you please provide more details about the purchase?\n\nProduct link: ${url}`;
+    return `Hello! I'd like to pre-order ${product.name} for ${price}. Could you please provide more details about the purchase?${footer}`;
   }
 
-  return `Hello! I'm interested in purchasing ${product.name} for ${price}. Could you please provide more details about the purchase?\n\nProduct link: ${url}`;
+  return `Hello! I'm interested in purchasing ${product.name} for ${price}. Could you please provide more details about the purchase?${footer}`;
 }
 
 export function getProductWhatsAppUrl(product: Product): string {

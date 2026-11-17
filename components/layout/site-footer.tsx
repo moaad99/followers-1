@@ -47,7 +47,7 @@ export function SiteFooter() {
 
         <div className="lg:col-span-2">
           <h3 className="font-mono text-xs tracking-[0.2em] text-white/40 uppercase">
-            Categories
+            Platforms
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm">
             {CATEGORIES.map((category) => (
@@ -84,10 +84,10 @@ export function SiteFooter() {
         {/* Extra bottom space on small screens clears the floating WhatsApp button and the product buy bar */}
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 pt-6 pb-28 text-center text-xs text-white/40 sm:flex-row sm:px-6 sm:text-left lg:px-8 lg:pb-6">
           <p>
-            © {STORE_CONFIG.storeName}. All products are digital and delivered
-            electronically.
+            © {STORE_CONFIG.storeName}. Orders are handled personally over
+            WhatsApp.
           </p>
-          <p>Purchases are handled personally over WhatsApp.</p>
+          <p>We never ask for your password.</p>
         </div>
       </div>
     </footer>

@@ -20,6 +20,7 @@ const fieldClass =
  */
 export function ContactForm({ products }: { products: ProductOption[] }) {
   const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [productSlug, setProductSlug] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -39,7 +40,11 @@ export function ContactForm({ products }: { products: ProductOption[] }) {
       message.trim(),
     ];
     if (product) {
-      lines.push("", `Product: ${product.name} (${product.price})`, product.url);
+      lines.push("", `Package: ${product.name} (${product.price})`, product.url);
+    }
+    const handle = username.trim().replace(/^@/, "");
+    if (handle) {
+      lines.push("", `My username: @${handle}`);
     }
 
     window.open(
@@ -67,8 +72,29 @@ export function ContactForm({ products }: { products: ProductOption[] }) {
       </div>
 
       <div>
+        <label htmlFor="contact-username" className="mb-2 block text-sm text-white/70">
+          Instagram or TikTok username{" "}
+          <span className="text-white/35">(optional)</span>
+        </label>
+        <input
+          id="contact-username"
+          type="text"
+          autoComplete="off"
+          autoCapitalize="none"
+          spellCheck={false}
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+          className={`${fieldClass} h-12`}
+          placeholder="@yourusername"
+        />
+        <p className="mt-1.5 text-xs text-white/40">
+          Only your username. Never share your password.
+        </p>
+      </div>
+
+      <div>
         <label htmlFor="contact-product" className="mb-2 block text-sm text-white/70">
-          Product <span className="text-white/35">(optional)</span>
+          Package <span className="text-white/35">(optional)</span>
         </label>
         <select
           id="contact-product"

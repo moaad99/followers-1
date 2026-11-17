@@ -1,22 +1,22 @@
-import { Download, MessageCircle, MousePointerClick } from "lucide-react";
+import { MessageCircle, MousePointerClick, TrendingUp } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 const STEPS = [
   {
     icon: MousePointerClick,
-    title: "Pick a product",
-    text: "Browse the catalogue and open any product to see what's inside, the formats and the licence.",
+    title: "Pick a package",
+    text: "Choose Instagram or TikTok and the number of followers. Each package shows its price and delivery time.",
   },
   {
     icon: MessageCircle,
     title: "Message us on WhatsApp",
-    text: "Tap Buy via WhatsApp. Your message is written for you, with the product name, price and link.",
+    text: "Tap Buy via WhatsApp. The message is written for you. Just add your username and send it.",
   },
   {
-    icon: Download,
-    title: "Get your files",
-    text: "We confirm payment with you directly and send the download link or access straight to your chat.",
+    icon: TrendingUp,
+    title: "Watch your followers grow",
+    text: "We confirm payment with you in the chat, then start delivery to your profile. No password, ever.",
   },
 ];
 

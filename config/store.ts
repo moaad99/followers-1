@@ -15,9 +15,9 @@ const vercelDomain = process.env.VERCEL_PROJECT_PRODUCTION_URL;
  */
 export const STORE_CONFIG = {
   storeName: "Neonvault",
-  tagline: "Premium digital products, delivered over WhatsApp",
+  tagline: "Instagram and TikTok followers, ordered over WhatsApp",
   description:
-    "UI kits, templates, 3D assets, courses and e-books for designers and developers. Browse the catalogue and buy directly over WhatsApp.",
+    "Instagram and TikTok follower packages from 100 to 10,000. Pick a package, send us your username on WhatsApp, and we handle the rest. No password needed.",
   whatsappNumber: "+212626829544",
   currency: "USD",
   locale: "en-US",
@@ -26,5 +26,5 @@ export const STORE_CONFIG = {
     (vercelDomain ? `https://${vercelDomain}` : "http://localhost:3000"),
   businessHours: "Monday to Saturday, 09:00 to 21:00 (GMT+1)",
   responseTime: "Replies usually within an hour during business hours",
-  deliveryMethod: "Download link sent on WhatsApp and by email",
+  deliveryMethod: "Followers are added to your public profile. We never ask for your password",
 } as const;

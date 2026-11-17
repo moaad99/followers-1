@@ -1,9 +1,14 @@
-import { CATEGORIES } from "@/data/products";
+/** Decorative scrolling band of short selling points. */
+const WORDS = [
+  "Instagram followers",
+  "TikTok followers",
+  "100 to 10K",
+  "Order on WhatsApp",
+  "No password needed",
+];
 
-/** Decorative scrolling band of category names. */
 export function CategoryMarquee() {
-  const words = [...CATEGORIES.map((c) => c.label), "Licences included"];
-  const loop = [...words, ...words];
+  const loop = [...WORDS, ...WORDS];
 
   return (
     <div

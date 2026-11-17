@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e0e16"/><stop offset="1" stop-color="#050507"/></linearGradient>
+<linearGradient id="brand" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#25f4ee"/><stop offset="0.25" stop-color="#25f4ee"/><stop offset="0.5" stop-color="#ffffff"/><stop offset="0.75" stop-color="#fe2c55"/><stop offset="1" stop-color="#fe2c55"/></linearGradient>
+<radialGradient id="ga"><stop offset="0" stop-color="#25f4ee" stop-opacity="0.5"/><stop offset="1" stop-color="#25f4ee" stop-opacity="0"/></radialGradient>
+<radialGradient id="gb"><stop offset="0" stop-color="#fe2c55" stop-opacity="0.4"/><stop offset="1" stop-color="#fe2c55" stop-opacity="0"/></radialGradient>
+<linearGradient id="panel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a1a26"/><stop offset="1" stop-color="#101018"/></linearGradient>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045"/></pattern>
+</defs>
+<rect width="1200" height="900" fill="url(#bg)"/>
+<rect width="1200" height="900" fill="url(#grid)"/>
+<circle cx="900" cy="180" r="480" fill="url(#ga)"/>
+<circle cx="250" cy="760" r="440" fill="url(#gb)"/>
+<rect x="370" y="70" width="460" height="780" rx="56" fill="#08080d" stroke="#ffffff" stroke-opacity="0.16" stroke-width="3"/>
+<rect x="520" y="92" width="160" height="26" rx="13" fill="#000000"/>
+<circle cx="600" cy="230" r="74" fill="none" stroke="url(#brand)" stroke-width="8"/>
+<g transform="translate(600 236) scale(2)" opacity="0.85">
+<circle cx="0" cy="-18" r="16" fill="#ffffff"/>
+<path d="M-28 26 C-28 4 -14 -2 0 -2 C14 -2 28 4 28 26 Z" fill="#ffffff"/>
+</g>
+<rect x="500" y="330" width="200" height="22" rx="11" fill="#ffffff" fill-opacity="0.85"/>
+<rect x="530" y="366" width="140" height="14" rx="7" fill="#ffffff" fill-opacity="0.3"/>
+<g font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">
+  <text x="460" y="460" font-weight="700" font-size="40" fill="#ffffff">48</text>
+  <text x="460" y="492" font-size="20" fill="#ffffff" fill-opacity="0.5">Posts</text>
+  <text x="600" y="460" font-weight="800" font-size="44" fill="url(#brand)">13,828</text>
+  <text x="600" y="492" font-size="20" fill="#ffffff" fill-opacity="0.75">Followers</text>
+  <text x="740" y="460" font-weight="700" font-size="40" fill="#ffffff">312</text>
+  <text x="740" y="492" font-size="20" fill="#ffffff" fill-opacity="0.5">Following</text>
+</g>
+<rect x="420" y="530" width="360" height="56" rx="16" fill="url(#brand)"/>
+<text x="600" y="566" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="22" fill="#050507">+10,000 followers</text>
+<rect x="420" y="616" width="112" height="112" rx="14" fill="#ffffff" fill-opacity="0.05"/><rect x="544" y="616" width="112" height="112" rx="14" fill="#ffffff" fill-opacity="0.08"/><rect x="668" y="616" width="112" height="112" rx="14" fill="#ffffff" fill-opacity="0.11"/>
+<rect x="420" y="740" width="112" height="80" rx="14" fill="#ffffff" fill-opacity="0.04"/><rect x="544" y="740" width="112" height="80" rx="14" fill="#ffffff" fill-opacity="0.06"/><rect x="668" y="740" width="112" height="80" rx="14" fill="#ffffff" fill-opacity="0.08"/>
+<g font-family="'Cascadia Code', Consolas, 'Courier New', monospace" font-size="22" fill="#ffffff">
+  <text x="90" y="300" fill-opacity="0.5">BEFORE</text>
+  <text x="90" y="350" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="48">3,828</text>
+  <text x="1110" y="300" text-anchor="end" fill-opacity="0.5">AFTER</text>
+  <text x="1110" y="350" text-anchor="end" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="48" fill="url(#brand)">13,828</text>
+</g>
+<path d="M250 420 C300 520 330 540 360 540" fill="none" stroke="#ffffff" stroke-opacity="0.25" stroke-width="3" stroke-dasharray="8 10"/>
+<path d="M950 420 C900 520 870 540 840 540" fill="none" stroke="url(#brand)" stroke-width="3" stroke-dasharray="8 10"/>
+</svg>

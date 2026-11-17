@@ -65,6 +65,9 @@ export function Catalog({ products }: { products: Product[] }) {
         product.name,
         product.shortDescription,
         product.category,
+        // Lets "1000", "1k" and "1,000" all match the 1K package
+        String(product.quantity),
+        product.quantity >= 1000 ? `${product.quantity / 1000}k` : "",
         ...product.features,
       ]
         .join(" ")
@@ -111,7 +114,7 @@ export function Catalog({ products }: { products: Product[] }) {
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search templates, icons, courses…"
+            placeholder="Search, for example 1K or TikTok…"
             className="h-11 w-full rounded-xl border border-white/10 bg-ink-950/60 pr-10 pl-11 text-sm text-white placeholder:text-white/35 focus:border-neon/60 focus:ring-2 focus:ring-neon/20 focus:outline-none [&::-webkit-search-cancel-button]:hidden"
           />
           {query && (
@@ -145,7 +148,7 @@ export function Catalog({ products }: { products: Product[] }) {
 
       <div
         role="group"
-        aria-label="Filter by category"
+        aria-label="Filter by platform"
         className="-mx-4 mt-5 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0 [&::-webkit-scrollbar]:hidden"
       >
         {chips.map((chip) => {
@@ -185,8 +188,8 @@ export function Catalog({ products }: { products: Product[] }) {
 
       <p aria-live="polite" className="mt-4 text-sm text-white/45">
         {visible.length === 1
-          ? "1 product"
-          : `${visible.length} products`}
+          ? "1 package"
+          : `${visible.length} packages`}
         {query.trim() && (
           <>
             {" "}
@@ -219,11 +222,11 @@ export function Catalog({ products }: { products: Product[] }) {
         <div className="glass mt-6 flex flex-col items-center rounded-3xl px-6 py-16 text-center">
           <PackageSearch className="size-10 text-neon" />
           <h3 className="mt-4 font-display text-xl font-semibold text-white">
-            No products match your search
+            No packages match your search
           </h3>
           <p className="mt-2 max-w-sm text-sm text-white/55">
-            Try a different keyword or category. You can also ask us on
-            WhatsApp if you&apos;re looking for something specific.
+            Try a different size or platform. If you need an amount that
+            isn&apos;t listed, ask us on WhatsApp.
           </p>
           <button
             type="button"

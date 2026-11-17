@@ -24,7 +24,7 @@ export default function NotFound() {
           className="mt-8 inline-flex h-12 items-center gap-2 rounded-full bg-neon px-6 font-semibold text-ink-950 transition-shadow hover:shadow-[0_10px_40px_-8px_rgb(57_255_136/0.8)]"
         >
           <ArrowLeft className="size-4" />
-          Back to the catalogue
+          Back to the packages
         </Link>
       </div>
     </div>

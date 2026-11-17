@@ -5,9 +5,11 @@ import {
   Check,
   ChevronRight,
   Clock,
-  FileArchive,
-  RefreshCw,
+  Eye,
+  Gauge,
+  MessageCircle,
   ShieldCheck,
+  UserPlus,
 } from "lucide-react";
 import { STORE_CONFIG } from "@/config/store";
 import {
@@ -18,7 +20,7 @@ import {
   type Product,
   type ProductFaq,
 } from "@/data/products";
-import { formatPrice } from "@/lib/format";
+import { formatPrice, formatPricePerThousand } from "@/lib/format";
 import { getProductUrl, getProductWhatsAppUrl } from "@/lib/whatsapp";
 import { AvailabilityBadge } from "@/components/ui/availability-badge";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
@@ -37,7 +39,7 @@ export async function generateMetadata({
 }: PageProps<"/products/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const product = getProductBySlug(slug);
-  if (!product) return { title: "Product not found" };
+  if (!product) return { title: "Package not found" };
   return {
     title: product.name,
     description: product.shortDescription,
@@ -61,16 +63,16 @@ function generalFaqs(product: Product): ProductFaq[] {
     {
       question: "How does buying over WhatsApp work?",
       answer:
-        "Tap the WhatsApp button and send the prepared message. We reply in the chat, confirm the details and share the payment options. Once payment is confirmed, we send your product.",
+        "Tap the WhatsApp button, add your username to the prepared message and send it. We reply in the chat, confirm the details and share the payment options. Delivery starts once payment is confirmed.",
     },
     {
-      question: "When will I receive the product?",
-      answer: `${product.delivery.time}. Delivery format: ${product.delivery.format.toLowerCase()}.`,
+      question: "When will I get my followers?",
+      answer: `Delivery starts ${product.delivery.start.toLowerCase()}. ${product.delivery.speed}.`,
     },
     {
-      question: "Can I ask questions before buying?",
+      question: "Do you need my password?",
       answer:
-        "Yes. Message us on WhatsApp with any question about formats, compatibility or licensing and we'll answer before you decide.",
+        "No. We only need your username or profile link. Never share your password with anyone, including us.",
     },
   ];
 }
@@ -193,7 +195,9 @@ export default async function ProductPage({
                 )}
               </div>
               <p className="mt-1 text-sm text-white/40">
-                One-time payment · {STORE_CONFIG.currency}
+                One-time payment ·{" "}
+                {formatPricePerThousand(product.price, product.quantity)}{" "}
+                followers
               </p>
 
               <div className="glass mt-8 rounded-3xl p-5 sm:p-6">
@@ -205,21 +209,22 @@ export default async function ProductPage({
                   {label}
                 </WhatsAppButton>
                 <p className="mt-3 text-center text-xs leading-relaxed text-white/45">
-                  Opens WhatsApp with a message containing the product name,
-                  price and link. Payment and delivery are arranged in the chat.
+                  Opens WhatsApp with the package name, price and link already
+                  written. Add your username and send. Payment is arranged in
+                  the chat.
                 </p>
                 <ul className="mt-5 grid gap-3 border-t border-white/7 pt-5 text-sm text-white/70 sm:grid-cols-3">
                   <li className="flex items-center gap-2">
                     <ShieldCheck className="size-4 shrink-0 text-neon" />
-                    Licence included
+                    No password needed
                   </li>
                   <li className="flex items-center gap-2">
-                    <FileArchive className="size-4 shrink-0 text-neon" />
-                    Digital delivery
+                    <UserPlus className="size-4 shrink-0 text-neon" />
+                    Added to your profile
                   </li>
                   <li className="flex items-center gap-2">
-                    <RefreshCw className="size-4 shrink-0 text-neon" />
-                    {product.delivery.updates}
+                    <MessageCircle className="size-4 shrink-0 text-neon" />
+                    Support on WhatsApp
                   </li>
                 </ul>
               </div>
@@ -275,9 +280,9 @@ export default async function ProductPage({
                 </h2>
                 <ul className="mt-5 space-y-5">
                   {[
-                    { icon: FileArchive, title: "Format", text: product.delivery.format },
-                    { icon: Clock, title: "When", text: product.delivery.time },
-                    { icon: RefreshCw, title: "Updates", text: product.delivery.updates },
+                    { icon: Clock, title: "Starts", text: product.delivery.start },
+                    { icon: Gauge, title: "Speed", text: product.delivery.speed },
+                    { icon: Eye, title: "Requirement", text: product.delivery.requirement },
                   ].map((row) => (
                     <li key={row.title} className="flex gap-4">
                       <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-neon/25 bg-neon/10 text-neon">
@@ -313,13 +318,13 @@ export default async function ProductPage({
               <Reveal>
                 <div className="flex items-end justify-between gap-4">
                   <h2 className="font-display text-3xl font-semibold tracking-tight text-white">
-                    You might also like
+                    Other packages
                   </h2>
                   <Link
                     href="/#catalog"
                     className="hidden text-sm text-neon hover:underline sm:block"
                   >
-                    View all products
+                    View all packages
                   </Link>
                 </div>
               </Reveal>

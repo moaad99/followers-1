@@ -10,8 +10,8 @@ interface CtaBandProps {
 
 export function CtaBand({
   whatsappUrl,
-  title = "Can't find what you're looking for?",
-  text = "Tell us what you need. We can point you to the right product or let you know when something new is coming.",
+  title = "Need a different amount?",
+  text = "Tell us the platform and the number of followers you want, and we'll reply on WhatsApp with a price.",
   buttonLabel = "Message us on WhatsApp",
 }: CtaBandProps) {
   return (

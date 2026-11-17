@@ -83,14 +83,14 @@ export function Hero({ whatsappUrl, stats }: HeroProps) {
             className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-[11px] tracking-[0.2em] text-white/80 uppercase sm:text-xs"
           >
             <span className="size-1.5 rounded-full bg-neon shadow-[0_0_10px_2px_rgb(57_255_136/0.8)]" />
-            Digital goods · WhatsApp checkout
+            Instagram · TikTok · WhatsApp checkout
           </motion.p>
 
           <motion.h1
             variants={item}
             className="mt-6 font-display text-[2.6rem] leading-[1.02] font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl"
           >
-            Premium digital products,{" "}
+            Grow your followers,{" "}
             <span className="text-gradient">one message away.</span>
           </motion.h1>
 
@@ -98,10 +98,9 @@ export function Hero({ whatsappUrl, stats }: HeroProps) {
             variants={item}
             className="mt-6 max-w-xl text-base leading-relaxed text-white/65 sm:text-lg"
           >
-            UI kits, templates, 3D assets, courses and e-books for people who
-            build things. Find what you need, tap{" "}
-            <span className="text-white">Buy via WhatsApp</span>, and we take
-            care of the rest personally. No account, no checkout forms.
+            Instagram and TikTok packages from 100 to 10,000 followers. Pick a
+            package, tap <span className="text-white">Buy via WhatsApp</span>{" "}
+            and send us your username. We never ask for your password.
           </motion.p>
 
           <motion.div
@@ -112,7 +111,7 @@ export function Hero({ whatsappUrl, stats }: HeroProps) {
               href="#catalog"
               className="group inline-flex h-14 items-center justify-center gap-2 rounded-full bg-neon px-7 font-semibold text-ink-950 shadow-[0_10px_40px_-8px_rgb(57_255_136/0.7)] transition-all duration-300 hover:shadow-[0_14px_50px_-6px_rgb(57_255_136/0.9)] active:scale-[0.98]"
             >
-              Browse the catalogue
+              See the packages
               <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
             <WhatsAppButton href={whatsappUrl} variant="outline" size="lg">
@@ -140,7 +139,7 @@ export function Hero({ whatsappUrl, stats }: HeroProps) {
 
       <motion.a
         href="#catalog"
-        aria-label="Scroll to the catalogue"
+        aria-label="Scroll to the packages"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6 }}
