@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e0e16"/><stop offset="1" stop-color="#050507"/></linearGradient>
+<radialGradient id="ga"><stop offset="0" stop-color="#a855f7" stop-opacity="0.45"/><stop offset="1" stop-color="#a855f7" stop-opacity="0"/></radialGradient>
+<radialGradient id="gb"><stop offset="0" stop-color="#ec4899" stop-opacity="0.35"/><stop offset="1" stop-color="#ec4899" stop-opacity="0"/></radialGradient>
+<linearGradient id="acc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a855f7"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+<linearGradient id="panel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a1a26"/><stop offset="1" stop-color="#101018"/></linearGradient>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045"/></pattern>
+</defs>
+<rect width="1200" height="900" fill="url(#bg)"/>
+<rect width="1200" height="900" fill="url(#grid)"/>
+<circle cx="300" cy="250" r="460" fill="url(#ga)"/>
+<circle cx="950" cy="700" r="420" fill="url(#gb)"/>
+<g transform="translate(0 -40)"><rect x="200" y="120" width="800" height="540" rx="22" fill="url(#panel)" stroke="#ffffff" stroke-opacity="0.12"/>
+<circle cx="230" cy="148" r="7" fill="#ff5f57" opacity="0.8"/><circle cx="254" cy="148" r="7" fill="#febc2e" opacity="0.8"/><circle cx="278" cy="148" r="7" fill="#28c840" opacity="0.8"/>
+<line x1="200" y1="176" x2="1000" y2="176" stroke="#ffffff" stroke-opacity="0.08"/>
+<rect x="310" y="138" width="340" height="20" rx="10" fill="#ffffff" fill-opacity="0.06"/>
+<rect x="240" y="204" width="90" height="16" rx="8" fill="url(#acc)"/>
+<rect x="660" y="206" width="56" height="12" rx="6" fill="#ffffff" fill-opacity="0.18"/><rect x="738" y="206" width="56" height="12" rx="6" fill="#ffffff" fill-opacity="0.18"/><rect x="816" y="206" width="56" height="12" rx="6" fill="#ffffff" fill-opacity="0.18"/><rect x="894" y="206" width="56" height="12" rx="6" fill="#ffffff" fill-opacity="0.18"/>
+<rect x="380" y="280" width="440" height="34" rx="10" fill="#ffffff" fill-opacity="0.85"/>
+<rect x="430" y="328" width="340" height="34" rx="10" fill="url(#acc)"/>
+<rect x="450" y="386" width="300" height="12" rx="6" fill="#ffffff" fill-opacity="0.22"/>
+<rect x="490" y="408" width="220" height="12" rx="6" fill="#ffffff" fill-opacity="0.16"/>
+<rect x="500" y="446" width="200" height="44" rx="22" fill="#a855f7"/>
+<rect x="240" y="524" width="224" height="110" rx="16" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+<circle cx="274" cy="560" r="16" fill="#a855f7" fill-opacity="0.85"/>
+<rect x="262" y="590" width="133.57598080167173" height="10" rx="5" fill="#ffffff" fill-opacity="0.2"/>
+<rect x="262" y="608" width="101.50961875124798" height="10" rx="5" fill="#ffffff" fill-opacity="0.12"/><rect x="488" y="524" width="224" height="110" rx="16" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+<circle cx="522" cy="560" r="16" fill="#ec4899" fill-opacity="0.85"/>
+<rect x="510" y="590" width="132.16257518358768" height="10" rx="5" fill="#ffffff" fill-opacity="0.2"/>
+<rect x="510" y="608" width="96.4014066722257" height="10" rx="5" fill="#ffffff" fill-opacity="0.12"/><rect x="736" y="524" width="224" height="110" rx="16" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+<circle cx="770" cy="560" r="16" fill="#a855f7" fill-opacity="0.85"/>
+<rect x="758" y="590" width="128.442203033196" height="10" rx="5" fill="#ffffff" fill-opacity="0.2"/>
+<rect x="758" y="608" width="118.10670416625841" height="10" rx="5" fill="#ffffff" fill-opacity="0.12"/></g><rect x="70" y="742" width="1060" height="110" rx="20" fill="#050507" fill-opacity="0.72" stroke="#ffffff" stroke-opacity="0.08"/>
+<text x="104" y="786" font-family="'Cascadia Code', Consolas, 'Courier New', monospace" font-size="20" letter-spacing="4" fill="#a855f7">TEMPLATE</text>
+<text x="104" y="830" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="38" fill="#ffffff">Launchpad SaaS Template</text>
+</svg>
